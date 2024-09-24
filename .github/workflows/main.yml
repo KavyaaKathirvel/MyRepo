@@ -1,0 +1,39 @@
+name: Analyze Test Logs
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js (or your preferred environment)
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # Specify your Node.js version
+
+      - name: Install dependencies
+        run: npm install # Change as needed for your project
+
+      - name: Run tests and capture logs
+        id: test
+        run: |
+          npm test | tee test.log # Change command as needed for your project
+
+      - name: Analyze logs for failed test cases
+        run: |
+          echo "Analyzing logs for failed test cases..."
+          if grep -q "FAIL" test.log; then
+            echo "Failed test cases found:"
+            grep "FAIL" test.log
+            exit 1
+          else
+            echo "All tests passed!"
+          fi
