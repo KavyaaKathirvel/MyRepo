@@ -1,0 +1,17 @@
+name: Random Cat Picture
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  fetch-cat:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fetch Random Cat Picture
+        run: |
+          echo "Here’s a cat to make your day better! 🐱"
+          curl https://api.thecatapi.com/v1/images/search | jq '.[0].url' | xargs wget -O random_cat.jpg
+          echo "Cat picture saved as random_cat.jpg!"
