@@ -1,0 +1,17 @@
+name: Code Contribution Appreciation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  appreciate-contribution:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show Appreciation
+        run: |
+          echo "Thank you for your contribution! 🌟"
+          echo "You have single-handedly saved the project. 💪"
+          echo "The team will forever be in your debt. 😂"
