@@ -13,5 +13,3 @@ jobs:
       - name: Show Appreciation
         run: |
           echo "Thank you for your contribution! 🌟"
-          echo "You have single-handedly saved the project. 💪"
-          echo "The team will forever be in your debt. 😂"
